@@ -1,26 +1,8 @@
 require("dotenv").config();
 
-const { Client, GatewayIntentBits } = require("discord.js");
+console.log("TOKEN var mı:", !!process.env.TOKEN);
+console.log("TOKEN ilk 5 karakter:", process.env.TOKEN?.slice(0, 5));
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildVoiceStates
-    ]
-});
-
-client.once("ready", () => {
-    console.log(`${client.user.tag} aktif!`);
-});
-
-client.on("messageCreate", (message) => {
-    if (message.author.bot) return;
-
-    if (message.content === "!ping") {
-        message.reply("🏓 Pong!");
-    }
-});
-
-client.login(process.env.TOKEN);
+setInterval(() => {
+  console.log("Bot test çalışıyor...");
+}, 10000);
